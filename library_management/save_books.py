@@ -29,9 +29,9 @@ def save_it(books):
     new_book.clear()
     for value in book.values():
         new_book.append(value)
-    print("new book = ", new_book)
+    # print("new book = ", new_book)
     books.append(new_book)
-    print("saving books = ", books)
+    # print("saving books = ", books)
     with open("all_books.csv", mode="w", newline='') as write_file:
         csv_writer = csv.writer(write_file)
         csv_writer.writerow(properties)        
