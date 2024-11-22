@@ -41,7 +41,7 @@ while True:
         view_books.show_books(books)  # load from csv file
 
     elif selected == "2":
-        print("books = ", books)
+        # print("books = ", books)
         save_books.save_it(books)  # input and save a new book data, both to database and books list
 
     elif selected == "3":
