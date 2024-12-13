@@ -13,7 +13,7 @@ def return_book(all_books, all_borrowers):
         try:
             choice = int(input('your choice : '))
             if not 1 <= choice <= sz:
-                raise ValueError("Choice of of range.")
+                raise ValueError("Choice out of range.")
             break
         except Exception as e:
             print("Error :", e, 'try again')
