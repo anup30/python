@@ -46,7 +46,7 @@ def borrow_a_book(all_books, borrower_list):
             print(f'{user_name} borrowed {all_books[index]['title']} successfully\n')
 
         else:
-            print("Currently all books are borrowed. try again latter. thank you\n")  # stock/quantity is 0
+            print("Currently the stock of this book is 0. try again latter. thank you\n")  # stock/quantity is 0
 
     else:
         print('The provided title and author combination was not found in Database!\n')
