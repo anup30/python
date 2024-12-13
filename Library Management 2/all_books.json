@@ -1,0 +1,24 @@
+[
+    {
+        "title": "book1",
+        "author": "author1",
+        "isbn": 24943,
+        "year": 2020,
+        "price": 50.0,
+        "quantity": 8,
+        "borrowed": 2,
+        "add_time": "13-12-2024 18:36:50",
+        "update_time": null
+    },
+    {
+        "title": "book2",
+        "author": "author2",
+        "isbn": 13892,
+        "year": 2015,
+        "price": 30.0,
+        "quantity": 8,
+        "borrowed": 0,
+        "add_time": "13-12-2024 18:37:46",
+        "update_time": null
+    }
+]
