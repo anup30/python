@@ -24,29 +24,28 @@ create Table if not exists Doctors(
 );	
 --drop table doctors; -- not allowed by foreign key
 
+create Table if not exists Patients(
+	patient_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	patient_name varchar(50) not null,
+	appointment_no int(10) unsigned not null,  -- appointment_id	
+	date varchar(50) not null, --  also in Appointments table
+	time varchar(50) not null, --  also in Appointments table		
+	primary key(patient_id)
+);
+
 
 create Table if not exists Appointments(
 	appointment_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	appointment_to int(10) unsigned not null,  -- doctor_id
+	patient_id int(10) unsigned not null, -- patient_id
 	date varchar(50) not null,
 	time varchar(50) not null,	
 	status varchar(50) not null,   -- pending/complete
 	primary key(appointment_id),
-	foreign key(appointment_to) REFERENCES Doctors(doctor_id) ON DELETE RESTRICT ON UPDATE CASCADE
+	foreign key(appointment_to) REFERENCES Doctors(doctor_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+	foreign key(patient_id) REFERENCES Patients(patient_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-
-create Table if not exists Patients(
-	patient_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-	patient_name varchar(50) not null,
-	appointment_no int(10) unsigned not null,  -- appointment_id
-	/*
-	--date varchar(50) not null, --  exits in Appointments table
-	--time varchar(50) not null, --  exits in Appointments table	
-	*/
-	primary key(patient_id),
-	foreign key(appointment_no) REFERENCES Appointments(appointment_id) ON DELETE RESTRICT ON UPDATE CASCADE
-);
 
 
 insert into departments(name, location) VALUES
@@ -68,22 +67,25 @@ insert into doctors(doctor_name, department, specialization, phone) VALUES
 ("Dr Md Sayedul Islam", 1, "Medicine, asthma, chest disease", "0161"); -- 6
 
 
-insert into appointments(appointment_to, date, time, status) VALUES
-(1, "20-1-2025","10 am", "pending"),
-(1, "21-1-2025","10 am", "pending"),
-(2, "21-1-2025","11 am", "pending"),
-(3, "21-1-2025","11:30 am", "pending"),
-(4, "22-1-2025","10 am", "pending"),
-(5, "22-1-2025","11 am", "pending"); -- 6
+insert into patients(patient_name, appointment_no, date, time) VALUES
+("Kamal",1,"2024-12-17","10:00:00"), -- 1
+("Raju",2,"2024-12-18","11:30:00"),
+("Kibria",3,"2024-12-19","10:00:00"),
+("M Sultan",4,"2024-12-20","09:00:00"),
+("Habib",5,"2024-12-20","11:00:00"); -- 5
 
 
-insert into patients(patient_name, appointment_no) VALUES
-("Kamal",1),
-("Raju",2),
-("Kibria",3),
-("M Sultan",4),
-("Habib",5),
-("Jakaria",6);
+
+insert into appointments(appointment_to, patient_id, date, time, status) VALUES
+(1, 1, "2025-01-20","10:00:00", "pending"), -- 1
+(2, 1, "2025-01-20","11:00:00", "pending"),
+(1, 2, "2025-01-21","10:30:00", "pending"),
+(3, 3, "2025-01-21","11:45:00", "pending"),
+(4, 4, "2025-01-22","10:50:00", "pending"),
+(5, 5, "2025-01-22","11:20:00", "pending"); -- 6
+
+
+
 
 /*
 Create tables for Doctors, Patients, Appointments, and Departments with appropriate fields.
