@@ -18,18 +18,20 @@ create Table if not exists Doctors(
 	doctor_name varchar(50) not null,
 	department int(10) unsigned not null,  -- department_id
 	specialization varchar(100) not null,
-	phone varchar(50) not null,
+	phone varchar(15) not null,
 	primary key(doctor_id),
 	foreign key(department) REFERENCES Departments(department_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );	
 --drop table doctors; -- not allowed by foreign key
 
+
 create Table if not exists Patients(
 	patient_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	patient_name varchar(50) not null,
 	appointment_no int(10) unsigned not null,  -- appointment_id	
-	date varchar(50) not null, --  also in Appointments table
-	time varchar(50) not null, --  also in Appointments table		
+	age int(3) not null,
+	gender varchar(10) not null,	
+	phone varchar(15) not null,	
 	primary key(patient_id)
 );
 
@@ -59,20 +61,21 @@ insert into departments(name, location) VALUES
 
 
 insert into doctors(doctor_name, department, specialization, phone) VALUES
-("Dr Amirul Islam", 1, "Heart, diabetis, medicuine", "0171"),
+("Dr Amirul Islam", 1, "Heart, medicine", "0171"),
 ("Dr Lutfor Rahman", 2, "Chief Cardiac Surgeon", "0172"),
 ("Dr Sultana Sharmin", 3, "Surgery", "0193"),
-("Dr Khademul Islam", 4, "Surgery", "0191"),
-("Dr Abduz Zaher", 2, "Surgery", "0192"),
-("Dr Md Sayedul Islam", 1, "Medicine, asthma, chest disease", "0161"); -- 6
+("Dr Khademul Islam", 4, "Medicine", "0191"),
+("Dr Abduz Zaher", 2, "Cancer", "0192"),
+("Dr Md Sayedul Islam", 1, "Diabetis,", "0161"); -- 6
 
 
-insert into patients(patient_name, appointment_no, date, time) VALUES
-("Kamal",1,"2024-12-17","10:00:00"), -- 1
-("Raju",2,"2024-12-18","11:30:00"),
-("Kibria",3,"2024-12-19","10:00:00"),
-("M Sultan",4,"2024-12-20","09:00:00"),
-("Habib",5,"2024-12-20","11:00:00"); -- 5
+insert into patients(patient_name, appointment_no, age, gender, phone) VALUES
+("Kamal",1,52,"Male","01713"), -- 1
+("Kamal",1,52,"Male","01713"),
+("Raju",2,45,"Male", "01725"),
+("Kibria",3,65, "Male","01937"),
+("M Sultana",4,57,"Female","01983"),
+("Habib",5,27,"Male", "01628"); -- 6
 
 
 
